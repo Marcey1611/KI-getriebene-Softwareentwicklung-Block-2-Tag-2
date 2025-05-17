@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Grußinator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-image"></div>
+  <div class="container">
+    <h1>🎉 Grußkarten-Generator mit KI 🎨</h1>
+
+    <!-- Kategorie Auswahl -->
+    <label for="category">Wähle eine Kategorie:</label>
+    <select id="category">
+      <option value="">Bitte wähle eine Kategorie aus</option>
+      <option value="birthday">Geburtstag</option>
+      <option value="wedding">Hochzeit</option>
+      <option value="christmas">Weihnachten</option>
+      <option value="funeral">Beerdigung</option>
+      <option value="birth">Geburt</option>
+      <option value="congrats">Glückwunsch</option>
+      <option value="thankyoucard">Danke</option>
+      <option value="somethingelse">Sonstiges</option>
+    </select>
+
+    <!-- Dynamisch generierte Felder -->
+    <form id="cardForm" class="hidden">
+      <div id="dynamicFields"></div>
+      <button type="submit">Grußkarte erstellen</button>
+    </form>
+
+    <!-- Ergebnisanzeige -->
+    <div id="result" class="hidden">
+      <h2>📝 Generierte Karte:</h2>
+      <img id="cardImage" alt="KI-generierte Grußkarte">
+      <p id="cardText"></p>
+
+      <button type="submit" id="downloadButton">Karte herunterladen</button>
+    </div>
+  </div>
+
+  <div class="background-card result-background"></div>
+    <div id="result" class="hidden">
+      <h2>📝 Generierter Spruch:</h2>
+      <p id="cardText"></p>
+
+  <script src="fieldTemplate.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
