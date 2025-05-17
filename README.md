@@ -46,7 +46,7 @@ git clone https://gitlab.rwu.de/ai-ki-swe/250517-ai-augmented-apps/grusinator
 cd grusinator
 ```
 
-### 2. API-Keys konfigurieren
+### API-Keys konfigurieren
 
 Passe in `docker-compose.yml` den Backend-Service an:
 
@@ -64,7 +64,7 @@ cd ..
 ### Docker Compose starten
 ```bash
 docker compose up --build
-````
+```
 
 ### Anwendung aufrufen
 ```
