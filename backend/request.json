@@ -1,0 +1,11 @@
+{
+  "cardType": "",  
+  "fields": {
+    "name": "",
+    "age": 0,
+    "charakter": "",
+    "interests": "",
+    "style": "",
+    "specials": ""
+  }
+}
