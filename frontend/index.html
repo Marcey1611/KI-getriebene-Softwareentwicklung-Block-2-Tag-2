@@ -8,23 +8,28 @@
 <body>
   <div class="container">
     <h1>🎉 Grußkarten-Generator mit KI 🎨</h1>
-    
-    <form id="cardForm">
-      <label for="name">Name des Empfängers:</label>
-      <input type="text" id="name" required>
 
-      <label for="occasion">Anlass:</label>
-      <input type="text" id="occasion" required>
+    <!-- Kategorie Auswahl -->
+    <label for="category">Wähle eine Kategorie:</label>
+    <select id="category">
+      <option value="">-- Bitte wählen --</option>
+      <option value="birthday">Geburtstag</option>
+      <option value="wedding">Hochzeit</option>
+      <option value="christmas">Weihnachten</option>
+      <option value="funeral">Beerdigung</option>
+      <option value="birth">Geburt</option>
+      <option value="congrats">Glückwunsch</option>
+      <option value="thankyoucard">Danke</option>
+      <option value="somethingelse">Sonstiges</option>
+    </select>
 
-      <label for="interests">Hobbys oder Interessen:</label>
-      <input type="text" id="interests">
-
-      <label for="tone">Stil (z. B. witzig, süß):</label>
-      <input type="text" id="tone" required>
-
+    <!-- Dynamisch generierte Felder -->
+    <form id="cardForm" class="hidden">
+      <div id="dynamicFields"></div>
       <button type="submit">Grußkarte erstellen</button>
     </form>
 
+    <!-- Ergebnisanzeige -->
     <div id="result" class="hidden">
       <h2>📝 Dein Spruch:</h2>
       <p id="cardText"></p>
