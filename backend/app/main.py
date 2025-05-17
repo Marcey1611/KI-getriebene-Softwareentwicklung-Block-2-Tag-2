@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
 from fastapi.responses import FileResponse
 import os
 from dotenv import load_dotenv
@@ -15,6 +17,14 @@ api_key_groq = os.getenv('GROQ_API_KEY')
 
 app = FastAPI()
 # teste localhost:8000/download/452f9fbe-2ee3-4171-b9b0-e180922c7197
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], #für alle
+    allow_credentials=True,
+    allow_methods=["*"],  # GET, POST, etc.
+    allow_headers=["*"],
+)
 @app.get("/")
 async def root():
     return {"message": "This is the Backend of the Grußinator"}

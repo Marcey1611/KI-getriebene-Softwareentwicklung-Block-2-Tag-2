@@ -5,3 +5,7 @@ services:
     build: ./frontend
     ports:
       - "80:80"
+  grussinator-backend:
+    extends:
+      file: ./backend/docker-compose.yml
+      service: grussinator-backend
