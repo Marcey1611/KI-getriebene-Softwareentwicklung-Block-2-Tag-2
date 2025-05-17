@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>KI-Grußkarten Generator</title>
+  <title>Grußinator</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
     <!-- Kategorie Auswahl -->
     <label for="category">Wähle eine Kategorie:</label>
     <select id="category">
-      <option value="">-- Bitte wählen --</option>
+      <option value="">Bitte wähle eine Kategorie aus</option>
       <option value="birthday">Geburtstag</option>
       <option value="wedding">Hochzeit</option>
       <option value="christmas">Weihnachten</option>
@@ -31,14 +31,15 @@
 
     <!-- Ergebnisanzeige -->
     <div id="result" class="hidden">
-      <h2>📝 Dein Spruch:</h2>
+      <h2>📝 Generierter Spruch:</h2>
       <p id="cardText"></p>
 
-      <h2>🖼️ Deine Karte:</h2>
+      <h2>🖼️ Generierte Karte:</h2>
       <img id="cardImage" alt="KI-generierte Grußkarte">
     </div>
   </div>
 
+  <script src="fieldTemplate.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
