@@ -39,9 +39,13 @@ form.addEventListener("submit", async function (e) {
   const fields = fieldTemplates[selected];
 
   // Werte sammeln
-  const payload = { category: selected };
+  const payload = {
+    category: selected,
+    [selected]: {} // dynamischer Property-Name
+  };
+  
   fields.forEach(f => {
-    payload[f.id] = document.getElementById(f.id).value;
+    payload[selected][f.id] = document.getElementById(f.id).value;
   });
 
   // Dummy-Wartezeit + Fake-Antwort für Demo
