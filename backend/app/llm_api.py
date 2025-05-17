@@ -33,7 +33,7 @@ def create_prompt(request: CardRequest) -> str:
         case _:
             raise ValueError("Unbekannter Kartentyp")
 
-    prompt += f"Schreibe die Karte in einem {style} Stil. Füge als Besonderheit {specials} ein."
+    prompt += f"Schreibe die Karte in einem {style} Stil. Achte besonders drauf {specials} passebd einzufügen."
 
     return prompt
 
@@ -48,7 +48,7 @@ def send_prompt(request: CardRequest) -> str:
         messages=[
             {
                 "role": "system",
-                "content": "Du bist ein kreativer Assistent, der alle möglichen Karten (Grußkarten, Hochzeitkarten, uws.) in dem vorgebenen Stiel erstellt. Erstelle nur ein kurzen Text"
+                "content": "Du bist ein kreativer Assistent, der alle möglichen Karten (Grußkarten, Hochzeitkarten, uws.) in dem vorgebenen Stiel erstellt. Erstelle nur einen sehr kurzen Text"
             },
             {
                 "role": "user",
