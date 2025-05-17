@@ -1,7 +1,5 @@
 # KI-getriebene-Softwareentwicklung-Block-2-Tag-2
 
-### KI-getriebene Softwareentwicklung Block 2 Tag 2
-
 # Grußinator
 
 ![Bild](./frontend/images/background.png)
@@ -13,8 +11,8 @@ Ein kreatives Web-Projekt, das auf Basis von Nutzereingaben automatisch eine wit
 🚀 Vollständig umgesetzt mit:
 - HTML/CSS/JavaScript (Frontend)
 - Python (FastAPI Backend)
-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX API (Textgenerierung)
-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX API (Bildgenerierung)
+- Für die Spruch generierung wird llama-3.3-70b-versatile verwendet. Die Kommunikation mit dem Modell ist über die qroq API realisiert.
+- Zur Bildgenerierung wird das Modell "stable diffusion large" verwendet. Die Kommunikation ist über die Hugginface API realisiert.
 - Docker & Docker Compose (Deployment)
 
 ---
@@ -30,6 +28,25 @@ Anschließend werden **kategoriespezifische Felder** angezeigt (Name, Alter, Hob
 3. Ein fertiges Grußkarten-Bild generiert
 
 Das Ergebnis wird im **Frontend angezeigt**: Text & Bild einer personalisierten Grußkarte ✨
+
+---
+
+## Link zum Repository
+
+https://gitlab.rwu.de/ai-ki-swe/250517-ai-augmented-apps/grusinator
+
+---
+
+## Quickstart Guide
+
+1. Repo clonen
+2. API-Keys von qroq und Huggingface in backend Docker Compose einfügen:
+environment:
+      - HUGGING_FACE_API_KEY=${HUGGING_FACE_API_KEY} 
+      - GROQ_API_KEY=${GROQ_API_KEY}
+
+3. cd ins Root Verzeichnis des Projekts
+4. docker compose up ausführen
 
 ---
 
