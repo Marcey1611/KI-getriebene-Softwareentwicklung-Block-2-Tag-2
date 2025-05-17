@@ -19,15 +19,15 @@ def create_prompt(request: CardRequest):
             prompt += f"{name1} und {name2}. Person1 hat folgende Interessen: {i1}. Person2 hat folgende Interessen: {i2}. "
 
         case ChristmasCard(name=name, style=style, specials=specials):
-            prompt += f"Frohe Weihnachten für {name}. "
+            prompt += f"Frohe Weihnachten für {name}. "#braucht noch arbeit am prompt (wird auch auf Weihnachten bezogen)
 
         case FuneralCard(name=name, style=style, specials=specials):
-            prompt += f"Eine Trauerkarte für {name}. "
+            prompt += f"Eine Trauerkarte für {name}. "#braucht noch arbeit am prompt (wird auch auf Weihnachten bezogen)
 
         case BirthCard(name=name, familyName=family, wishes=wishes, style=style, specials=specials):
             prompt += f"Willkommen {name} {family}! Wünsche: {wishes}. "
 
-        case ThankYouCard(name=name, style=style, specials=specials):
+        case ThankYouCard(name=name, style=style, specials=specials): #braucht noch arbeit am prompt (wird auch auf Weihnachten bezogen)
             prompt += f"Eine Dankeskarte an {name}. "
 
         case CongratsCard(name=name, reason=reason, style=style, specials=specials):
