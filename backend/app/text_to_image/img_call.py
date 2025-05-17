@@ -10,9 +10,9 @@ api_key = os.getenv('HUGGING_FACE_API_KEY')
 
 def save_img(image):
     uuid = uuid4()
-    file_name = f"{uuid4()}.png"
-    file_path = f"../images/{file_name}"
-    os.makedirs("../images", exist_ok=True)
+    file_name = f"{uuid}.png"
+    file_path = f"/images/{file_name}"
+    os.makedirs("/images", exist_ok=True)
     image.save(file_path)
     return uuid
 

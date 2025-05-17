@@ -22,7 +22,7 @@ async def root():
 @app.get("/download/{file_name}")
 def download_image(file_name: str):
     file_name = file_name+".png"
-    file_path = f"images/{file_name}"
+    file_path = f"/images/{file_name}"
     if os.path.exists(file_path):
         return FileResponse(file_path, media_type="image/png", filename=file_name)
     return {"error": "File not found"}
