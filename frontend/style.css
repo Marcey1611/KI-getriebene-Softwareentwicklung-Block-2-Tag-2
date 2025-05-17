@@ -1,18 +1,34 @@
 body {
-  font-family: sans-serif;
-  background: #f4f4f4;
+  background-color: #f0f0f0;
   margin: 0;
   padding: 0;
 }
 
+.background-image {
+  position: fixed; /* Bleibt beim Scrollen fixiert */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('images/background.png');
+  background-size: 100% 100%;  /* Zerrt das Bild */
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 0.8; 
+}
+
+
 .container {
   max-width: 600px;
-  margin: 40px auto;
-  background: white;
+  margin: 40px auto 0;
+  background: #f4f4f4;
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 }
+
 
 h1, h2 {
   text-align: center;
