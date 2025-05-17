@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>KI-Grußkarten Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🎉 Grußkarten-Generator mit KI 🎨</h1>
+    
+    <form id="cardForm">
+      <label for="name">Name des Empfängers:</label>
+      <input type="text" id="name" required>
+
+      <label for="occasion">Anlass:</label>
+      <input type="text" id="occasion" required>
+
+      <label for="interests">Hobbys oder Interessen:</label>
+      <input type="text" id="interests">
+
+      <label for="tone">Stil (z. B. witzig, süß):</label>
+      <input type="text" id="tone" required>
+
+      <button type="submit">Grußkarte erstellen</button>
+    </form>
+
+    <div id="result" class="hidden">
+      <h2>📝 Dein Spruch:</h2>
+      <p id="cardText"></p>
+
+      <h2>🖼️ Deine Karte:</h2>
+      <img id="cardImage" alt="KI-generierte Grußkarte">
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
