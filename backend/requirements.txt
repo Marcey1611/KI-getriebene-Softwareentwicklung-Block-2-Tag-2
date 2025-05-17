@@ -1,4 +1,7 @@
+fastapi[standard]
+huggingface_hub
+Groq
 fastapi 
 groq
 pydantic
-typing 
+typing

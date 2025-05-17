@@ -2,7 +2,7 @@ from groq import Groq
 
 from models import CardRequest, BirthdayCard, WeddingCard, ChristmasCard, FuneralCard, BirthCard, ThankYouCard, CongratsCard, SomethingElseCard
 
-def create_prompt(request: CardRequest) -> str: 
+def create_prompt(request: CardRequest):
     prompt = f"Schreibe eine {request.category} Karte für "
 
     match request.category_data:
@@ -34,16 +34,14 @@ def create_prompt(request: CardRequest) -> str:
             raise ValueError("Unbekannter Kartentyp")
 
     prompt += f"Schreibe die Karte in einem {style} Stil. Füge als Besonderheit {specials} ein."
+    card_text = send_prompt(prompt)
+    return card_text,request.category,style
 
-    return prompt
-
-def send_prompt(request: CardRequest) -> str:
+def send_prompt(prompt: str) -> str:
     client = Groq(
         api_key="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",
     )
 
-    prompt = create_prompt(request)
-   
     chat_completion = client.chat.completions.create(
         messages=[
             {
