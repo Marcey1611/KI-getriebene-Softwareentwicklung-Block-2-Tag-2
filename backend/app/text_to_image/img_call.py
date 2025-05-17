@@ -4,9 +4,12 @@ import os
 from io import BytesIO
 from uuid import uuid4
 import base64
+from PIL import Image
+
 
 load_dotenv()
 api_key = os.getenv('HUGGING_FACE_API_KEY')
+dummy_uuid = "452f9fbe-2ee3-4171-b9b0-e180922c7197"
 
 def save_img(image):
     uuid = uuid4()
@@ -43,5 +46,15 @@ def generate_image(img_prompt):
 
 
 
+def generate_image_dummy(img_prompt):
+    return image_to_base64("/app/images/452f9fbe-2ee3-4171-b9b0-e180922c7197.png"),"452f9fbe-2ee3-4171-b9b0-e180922c7197"
+
+def image_to_base64(path: str) -> str:
+    with Image.open(path) as img:
+        buffered = BytesIO()
+        img.save(buffered, format="PNG")  # Oder "JPEG" je nach Bild
+        img_bytes = buffered.getvalue()
+        base64_str = base64.b64encode(img_bytes).decode("utf-8")
+        return base64_str
 #generate_image(llm_description)
 

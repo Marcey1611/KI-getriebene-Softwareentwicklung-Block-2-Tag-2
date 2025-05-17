@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 from models import CardRequest
 from llm_api import create_prompt
 from text_to_image.description_generation import generate_image_description
-from text_to_image.img_call import generate_image
+from text_to_image.img_call import generate_image,generate_image_dummy
 
 load_dotenv()
 api_key_hugg = os.getenv('HUGGING_FACE_API_KEY')
@@ -44,7 +44,7 @@ async def generate_card(request: CardRequest):
 
     card_description,topic,style = create_prompt(request)
     img_desc = generate_image_description(topic,card_description,style)
-    img_base64,uuid = generate_image(img_desc)
+    img_base64,uuid = generate_image_dummy(img_desc)
     return {
         "prompt": card_description,
         "base64_img": img_base64,
