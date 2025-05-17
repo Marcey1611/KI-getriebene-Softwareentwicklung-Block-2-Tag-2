@@ -41,7 +41,7 @@ https://gitlab.rwu.de/ai-ki-swe/250517-ai-augmented-apps/grusinator
 
 1. Repo clonen
 2. API-Keys von qroq und Huggingface in backend Docker Compose einfügen:
-environment:
+- environment:
       - HUGGING_FACE_API_KEY=${HUGGING_FACE_API_KEY} 
       - GROQ_API_KEY=${GROQ_API_KEY}
 
