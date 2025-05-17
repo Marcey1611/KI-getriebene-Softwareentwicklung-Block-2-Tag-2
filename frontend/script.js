@@ -41,7 +41,7 @@ form.addEventListener("submit", async function (e) {
   // Werte sammeln
   const payload = {
     category: selected,
-    [selected]: {} // dynamischer Property-Name
+    category_data: {} // dynamischer Property-Name
   };
   
   fields.forEach(f => {
