@@ -2,6 +2,8 @@
 
 # Grußinator
 
+![Bild](./frontend/images/background.png)
+
 ## 🎉 KI-Grußkarten Generator
 
 Ein kreatives Web-Projekt, das auf Basis von Nutzereingaben automatisch eine witzige, emotionale oder stilvolle Grußkarte generiert – bestehend aus einem **Spruch (Text)** und einem **dazu passenden Bild**.

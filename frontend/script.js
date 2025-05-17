@@ -45,7 +45,7 @@ form.addEventListener("submit", async function (e) {
   };
   
   fields.forEach(f => {
-    payload[selected][f.id] = document.getElementById(f.id).value;
+    payload.category_data[f.id] = document.getElementById(f.id).value;
   });
 
   // Dummy-Wartezeit + Fake-Antwort für Demo
