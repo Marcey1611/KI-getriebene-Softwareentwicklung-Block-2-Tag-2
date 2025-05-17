@@ -62,14 +62,11 @@ form.addEventListener("submit", async function (e) {
     });
 
     const data = await response.json();
+    console.log(response.data)
     document.getElementById("cardText").textContent = data.prompt;
-    const base64image = data.base64_img;
+    //const base64image = data.base64_img;
     uuid = data.uuid;
-    const img = document.createElement("img");
-    img.src = "data:image/png;base64," + data.base64_img;
-    document.getElementById("cardImage").innerHTML = "";
-    document.getElementById("cardImage").appendChild(img);
-    //document.getElementById("cardImage").src = "data:image/png;base64," + base64String;
+    document.getElementById("cardImage").src = "data:image/png;base64," + data.base64_img;
   } catch (error) {
     document.getElementById("cardText").textContent =
       "Fehler beim Abrufen der Karte. (Backend vermutlich noch nicht aktiv)";
