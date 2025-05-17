@@ -36,14 +36,24 @@ Das Ergebnis wird im **Frontend angezeigt**: Text & Bild einer personalisierten 
 ```plaintext
 .
 ├── backend/
-│   ├── app.py                # FastAPI-Server (Text + Bild über KI)
-│   └── requirements.txt      # Python-Abhängigkeiten
+│   ├── requirements.txt
+|   ├── .env
+|   ├── request.json
+│   └── app/
+|       ├── main.py
+|       ├── modely.py
+|       ├── llm_api.py
+|       └── text_to_image
+|           ├── description_generation.py
+|           └── text_to_image.py
 ├── frontend/
-│   ├── index.html            # Hauptseite mit Formular
-│   ├── style.css             # Layout & Design
-│   ├── script.js             # Form-Logik, API-Call
-│   └── fieldTemplates.js     # Kategoriespezifische Eingabefelder
-├── docker-compose.yml        # Multi-Service Setup
+│   ├── index.html
+│   ├── style.css
+│   ├── script.js
+│   ├── fieldTemplates.js
+|   └── images/
+|       └── background.png
+├── docker-compose.yml
 └── README.md
 ```
 
