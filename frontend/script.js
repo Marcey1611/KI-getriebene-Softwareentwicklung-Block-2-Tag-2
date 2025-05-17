@@ -65,7 +65,11 @@ form.addEventListener("submit", async function (e) {
     document.getElementById("cardText").textContent = data.prompt;
     const base64image = data.base64_img;
     uuid = data.uuid;
-    document.getElementById("cardImage").src = "data:image/png;base64," + base64String;
+    const img = document.createElement("img");
+    img.src = "data:image/png;base64," + data.base64_img;
+    document.getElementById("cardImage").innerHTML = "";
+    document.getElementById("cardImage").appendChild(img);
+    //document.getElementById("cardImage").src = "data:image/png;base64," + base64String;
   } catch (error) {
     document.getElementById("cardText").textContent =
       "Fehler beim Abrufen der Karte. (Backend vermutlich noch nicht aktiv)";

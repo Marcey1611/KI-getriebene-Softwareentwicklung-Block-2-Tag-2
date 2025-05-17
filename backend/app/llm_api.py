@@ -1,4 +1,10 @@
 from groq import Groq
+from dotenv import load_dotenv
+import os
+load_dotenv()
+api_key = os.getenv('GROQ_API_KEY')
+
+
 
 from models import CardRequest, BirthdayCard, WeddingCard, ChristmasCard, FuneralCard, BirthCard, ThankYouCard, CongratsCard, SomethingElseCard
 
@@ -40,7 +46,7 @@ def create_prompt(request: CardRequest):
 
 def send_prompt(prompt: str) -> str:
     client = Groq(
-        api_key="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",
+        api_key=api_key,
     )
 
     chat_completion = client.chat.completions.create(
