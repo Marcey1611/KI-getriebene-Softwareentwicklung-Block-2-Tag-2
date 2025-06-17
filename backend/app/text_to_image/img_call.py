@@ -29,7 +29,7 @@ def convert_img(image):
     return img_base
 
 def generate_image(prompt):
-    client = openai.OpenAI(api_key=os.getenv("HUGGING_FACE_API_KEY"))
+    client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
     response = client.images.generate(
         model="dall-e-2",  # ✅ NICHT dall-e-3 bei b64_json!
         prompt=prompt,

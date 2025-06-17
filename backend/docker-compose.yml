@@ -8,7 +8,7 @@ services:
     volumes:
       - ./app:/app  # Lokales Verzeichnis ./app wird in /app im Container eingebunden
     environment:
-      - HUGGING_FACE_API_KEY=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  # Optional, wenn du explizit sein willst
+      - OPENAI_API_KEY=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  # Optional, wenn du explizit sein willst
       - GROQ_API_KEY=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  # Optional, wenn du explizit sein willst
     command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 
