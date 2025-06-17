@@ -6,3 +6,4 @@ groq
 pydantic
 typing
 Pillow
+openai

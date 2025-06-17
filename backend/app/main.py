@@ -56,9 +56,8 @@ async def generate_card(request: CardRequest):
 
     card_description,topic,style = create_prompt(request)
     img_desc = generate_image_description(topic,card_description,style)
-    img_base64,uuid = generate_image(img_desc)
+    img_base64 = generate_image(img_desc)
     return {
         "prompt": card_description,
         "base64_img": img_base64,
-        "img_uuid": uuid
     }

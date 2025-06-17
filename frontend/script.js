@@ -3,6 +3,7 @@ const form = document.getElementById("cardForm");
 const dynamicFields = document.getElementById("dynamicFields");
 const resultBox = document.getElementById("result");
 let uuid;
+const safeInputPattern = /^[a-zA-Z0-9 .,!?()_:;'\"-]*$/;
 
 // Dynamisches Erzeugen von Feldern
 categorySelect.addEventListener("change", () => {
@@ -45,11 +46,24 @@ form.addEventListener("submit", async function (e) {
     category_data: {} // dynamischer Property-Name
   };
   
+  //Whitelist-basierte Validierung
   fields.forEach(f => {
-    payload.category_data[f.id] = document.getElementById(f.id).value;
+    const value = document.getElementById(f.id).value;
+
+    if (!safeInputPattern.test(value)) {
+      alert(`Ungültige Eingabe im Feld "${f.label}". Bitte nur Buchstaben, Zahlen und gängige Satzzeichen verwenden.`);
+      throw new Error("Eingabe enthält unerlaubte Zeichen");
+    }
+
+    if (value.length > 250) {
+      alert(`Zu lange Eingabe im Feld "${f.label}". Maximal 250 Zeichen erlaubt.`);
+      throw new Error("Eingabe zu lang");
+    }
+
+    payload.category_data[f.id] = value;
   });
 
-  // Dummy-Wartezeit + Fake-Antwort für Demo
+  // Dummy-Wartezeit
   resultBox.classList.remove("hidden");
   document.getElementById("cardText").textContent = "KI denkt gerade nach...";
   document.getElementById("cardImage").src = "";
@@ -64,43 +78,10 @@ form.addEventListener("submit", async function (e) {
     const data = await response.json();
     console.log(response.data)
     document.getElementById("cardText").textContent = data.prompt;
-    //const base64image = data.base64_img;
-    uuid = data.img_uuid;
     document.getElementById("cardImage").src = "data:image/png;base64," + data.base64_img;
-    document.getElementById("downloadButton").style.display = "inline";
   } catch (error) {
     document.getElementById("cardText").textContent =
       "Fehler beim Abrufen der Karte. (Backend vermutlich noch nicht aktiv)";
     document.getElementById("cardImage").src = "";
-  }
-});
-
-
-downloadButton.addEventListener("click", async function () {
-  if (!uuid) {
-    alert("Bitte zuerst eine Karte generieren.");
-    return;
-  }
-
-  try {
-    const response = await fetch(`http://localhost:8000/download/${uuid}`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" }
-    });
-
-    if (response.ok) {
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `card_${uuid}.png`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    } else {
-      alert("Fehler beim Herunterladen der Karte.");
-    }
-  } catch (error) {
-    alert("Fehler beim Herunterladen der Karte.");
   }
 });

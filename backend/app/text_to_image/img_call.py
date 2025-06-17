@@ -5,6 +5,7 @@ from io import BytesIO
 from uuid import uuid4
 import base64
 from PIL import Image
+import openai
 
 
 load_dotenv()
@@ -27,24 +28,21 @@ def convert_img(image):
 
     return img_base
 
-def generate_image(img_prompt):
-    client = InferenceClient(
-        provider="fal-ai",
-        api_key=api_key
+def generate_image(prompt):
+    client = openai.OpenAI(api_key=os.getenv("HUGGING_FACE_API_KEY"))
+    response = client.images.generate(
+        model="dall-e-2",  # ✅ NICHT dall-e-3 bei b64_json!
+        prompt=prompt,
+        n=1,
+        size="1024x1024",
+        response_format="b64_json"
     )
-    try:
-    # output is a PIL.Image object
-        image = client.text_to_image(
-            img_prompt,
-            model="stabilityai/stable-diffusion-3.5-large",
-        )
-        uuid = save_img(image)
-        return convert_img(image), uuid
-    except Exception as e:
-        print(e)
-        print("Your Credits on Huggingface is most likely exceeded! Visit https://huggingface.co/settings/billing to see if you have anything left!")
 
+    base64_string = response.data[0].b64_json
+    print(f"Base64-String: {base64_string[:30]}...")  # Ausgabe der ersten 30 Zeichen der Base64-String
 
+    # Base64-String extrahieren
+    return base64_string
 
 def generate_image_dummy(img_prompt):
     return image_to_base64("/app/images/452f9fbe-2ee3-4171-b9b0-e180922c7197.png"),"452f9fbe-2ee3-4171-b9b0-e180922c7197"
