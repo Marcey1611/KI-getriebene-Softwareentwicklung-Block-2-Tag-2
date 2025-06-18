@@ -48,12 +48,11 @@ cd grusinator
 
 ### API-Keys konfigurieren
 
-Passe in `docker-compose.yml` den Backend-Service an:
+Passe im Verzeichnis backend die `.env` Datei an indem Sie die Passenden API-Keys hier eintragen:
 
 ```yaml
-environment:
-      - HUGGING_FACE_API_KEY=${HUGGING_FACE_API_KEY} 
-      - GROQ_API_KEY=${GROQ_API_KEY}
+HUGGING_FACE_API_KEY=YOUR_API_KEY
+GROQ_API_KEY=YOUR_API_KEY
 ```
 
 ### Zurück ins Projektverzeichnis
