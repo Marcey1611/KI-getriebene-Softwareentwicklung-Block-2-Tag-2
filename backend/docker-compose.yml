@@ -7,8 +7,7 @@ services:
       - "8000:8000"
     volumes:
       - ./app:/app  # Lokales Verzeichnis ./app wird in /app im Container eingebunden
-    environment:
-      - HUGGING_FACE_API_KEY=${HUGGING_FACE_API_KEY}  # Optional, wenn du explizit sein willst
-      - GROQ_API_KEY=${GROQ_API_KEY}  # Optional, wenn du explizit sein willst
+    env_file:
+      - .env
     command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 

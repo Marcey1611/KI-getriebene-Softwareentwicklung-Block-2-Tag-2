@@ -29,14 +29,14 @@ def convert_img(image):
 
 def generate_image(img_prompt):
     client = InferenceClient(
-        provider="fal-ai",
-        api_key=api_key
+        provider="hf-inference",
+        api_key=os.getenv('HUGGING_FACE_API_KEY')
     )
     try:
     # output is a PIL.Image object
         image = client.text_to_image(
             img_prompt,
-            model="stabilityai/stable-diffusion-3.5-large",
+            model="stabilityai/stable-diffusion-3.5-large-turbo",
         )
         uuid = save_img(image)
         return convert_img(image), uuid
