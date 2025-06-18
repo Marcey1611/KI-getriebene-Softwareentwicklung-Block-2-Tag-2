@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from models import CardRequest
 from llm_api import create_prompt
 from text_to_image.description_generation import generate_image_description
-from text_to_image.img_call import generate_image,generate_image_dummy
+from text_to_image.img_call import generate_image
 
 load_dotenv()
 api_key_hugg = os.getenv('HUGGING_FACE_API_KEY')
@@ -40,14 +40,6 @@ app.add_middleware(
 @app.get("/")
 async def root():
     return {"message": "This is the Backend of the Grußinator"}
-
-@app.get("/download/{file_name}")
-def download_image(file_name: str):
-    file_name = file_name+".png"
-    file_path = f"/images/{file_name}"
-    if os.path.exists(file_path):
-        return FileResponse(file_path, media_type="image/png", filename=file_name)
-    return {"error": "File not found"}
 
 @app.post("/generate-card")
 async def generate_card(request: CardRequest):
