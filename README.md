@@ -48,7 +48,7 @@ cd grusinator
 
 ### API-Keys konfigurieren
 
-Passe im Verzeichnis backend die `.env` Datei an indem Sie die Passenden API-Keys hier eintragen:
+Passe im Verzeichnis `backend` die `.env` Datei an indem Sie die Passenden API-Keys hier eintragen:
 
 ```yaml
 HUGGING_FACE_API_KEY=YOUR_API_KEY
