@@ -8,7 +8,7 @@ services:
     volumes:
       - ./app:/app
     environment:
-      - OPENAI_API_KEY=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
-      - GROQ_API_KEY=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
+      - OPENAI_API_KEY=REPLACE_WITH_API_KEY
+      - GROQ_API_KEY=REPLACE_WITH_API_KEY
     command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 
