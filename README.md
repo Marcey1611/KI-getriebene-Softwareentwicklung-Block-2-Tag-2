@@ -12,7 +12,7 @@ Ein kreatives Web-Projekt, das auf Basis von Nutzereingaben automatisch eine wit
 - HTML/CSS/JavaScript (Frontend)
 - Python (FastAPI Backend)
 - Für die Spruch generierung wird llama-3.3-70b-versatile verwendet. Die Kommunikation mit dem Modell ist über die qroq API realisiert.
-- Zur Bildgenerierung wird das Modell "stable diffusion large" verwendet. Die Kommunikation ist über die Hugginface API realisiert.
+- Zur Bildgenerierung wird das Modell "stable diffusion large turbo" verwendet. Die Kommunikation ist über die Hugginface API realisiert.
 - Docker & Docker Compose (Deployment)
 
 ---
@@ -105,4 +105,4 @@ docker compose up --build
 |KI-Tool|Einsatzzweck|Einsatzintensität|
 |-|-|-|
 |ChatGPT-4o|Code-Generierung|Durchgängiger Einsatz zur Code-Generierung im Projekt|
-|GitHub Copilot (Codex)|Code-Vervollständigung|Durchgängiger Einsatz zur Code-Vervollständigung im Projekt|
+|GitHub Copilot (GPT-4o Copilot)|Code-Vervollständigung|Durchgängiger Einsatz zur Code-Vervollständigung im Projekt|
