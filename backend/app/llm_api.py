@@ -4,44 +4,47 @@ import os
 load_dotenv()
 api_key = os.getenv('GROQ_API_KEY')
 
-
-
 from models import CardRequest, BirthdayCard, WeddingCard, ChristmasCard, FuneralCard, BirthCard, ThankYouCard, CongratsCard, SomethingElseCard
 
 def create_prompt(request: CardRequest):
     prompt = f"Schreibe eine {request.category} Karte für "
 
-    match request.category_data:
-        case BirthdayCard(name=name, age=age, charakter=charakter, interests=interests, style=style, specials=specials):
-            prompt += f"{name} zum {age}, die Person ist {charakter} vom Charakter und hat diese Interessen {interests}. "
+    data = request.category_data
+    category = request.category.lower()  # nur zur Sicherheit
 
-        case WeddingCard(name1=name1, name2=name2, interests1=i1, interests2=i2, style=style, specials=specials):
-            prompt += f"{name1} und {name2}. Person1 hat folgende Interessen: {i1}. Person2 hat folgende Interessen: {i2}. "
+    match category:
+        case "birthday":
+            prompt += f"{data.name} zum {data.age}, die Person ist {data.charakter} vom Charakter und hat diese Interessen {data.interests}. "
 
-        case ChristmasCard(name=name, style=style, specials=specials):
-            prompt += f"Frohe Weihnachten für {name}. "#braucht noch arbeit am prompt (wird auch auf Weihnachten bezogen)
+        case "wedding":
+            prompt += f"{data.name1} und {data.name2}. Person1 hat folgende Interessen: {data.interests1}. Person2 hat folgende Interessen: {data.interests2}. "
 
-        case FuneralCard(name=name, style=style, specials=specials):
-            prompt += f"Eine Trauerkarte für {name}. "#braucht noch arbeit am prompt (wird auch auf Weihnachten bezogen)
+        case "christmas":
+            prompt += f"Frohe Weihnachten für {data.name}. "
 
-        case BirthCard(name=name, familyName=family, wishes=wishes, style=style, specials=specials):
-            prompt += f"Willkommen {name} {family}! Wünsche: {wishes}. "
+        case "funeral":
+            prompt += f"Eine Trauerkarte für {data.name}. "
 
-        case ThankYouCard(name=name, style=style, specials=specials): #braucht noch arbeit am prompt (wird auch auf Weihnachten bezogen)
-            prompt += f"Eine Dankeskarte an {name}. "
+        case "birth":
+            prompt += f"Willkommen {data.name} {data.familyName}! Wünsche: {data.wishes}. "
 
-        case CongratsCard(name=name, reason=reason, style=style, specials=specials):
-            prompt += f"Glückwünsche an {name} für {reason}. "
+        case "thankyoucard":
+            prompt += f"Eine Dankeskarte an {data.name}. "
 
-        case SomethingElseCard(name=name, reason=reason, info=info, style=style, specials=specials):
-            prompt += f"Eine Karte für {name}. Anlass: {reason}. Info: {info}. "
+        case "congrats":
+            prompt += f"Glückwünsche an {data.name} für {data.reason}. "
+
+        case "somethingelse":
+            prompt += f"Eine Karte für {data.name}. Anlass: {data.reason}. Info: {data.info}. "
 
         case _:
             raise ValueError("Unbekannter Kartentyp")
 
-    prompt += f"Schreibe die Karte in einem {style} Stil. Achte besonders drauf {specials} passebd einzufügen."
+    prompt += f"Schreibe die Karte in einem {data.style} Stil. Achte besonders drauf {data.specials} passend einzufügen."
+    print(prompt)
+
     card_text = send_prompt(prompt)
-    return card_text,request.category,style
+    return card_text, category, data.style
 
 
 def send_prompt(prompt: str) -> str:
